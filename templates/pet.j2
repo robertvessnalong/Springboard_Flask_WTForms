@@ -1,0 +1,23 @@
+{% extends "base.j2"%}
+{%block title%}{{pet.name}}{%endblock%}
+{%block content%}
+<div class="container">
+    <div class="row justify-content-center">
+        <div class="col-lg-12 text-center">
+         <h1 class="display-3">{{pet.name}}</h1>
+         <h3 class="display-4">{{pet.species}}</h3>
+     
+         {% if pet.photo_url == "https://images-na.ssl-images-amazon.com/images/I/81S6UlXIJeL._SL1500_.jpg"%}
+            <p>Sorry, no photo of this pet</p>
+         {% else %}
+            <img class="w-50 p-3 img-fluid" src="{{pet.photo_url}}" alt="picture of {{pet.name}}">
+         {% endif %}
+            <h4>{{pet.notes}}</h4>
+         {% if pet.age %}
+            <p>Age: {{pet.age}}</p>
+         {%endif%}
+         <a href="/pets/{{pet.id}}/edit" class="btn btn-secondary mb-2">Edit Pet</a>
+     </div>
+    </div>
+</div>
+{%endblock%}

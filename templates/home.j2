@@ -1,0 +1,25 @@
+{% extends "base.j2"%}
+{%block title%}Pet Adoption{%endblock%}
+{%block content%}
+<div class="container">
+    <div class="row justify-content-center">
+        <div class="col-lg-12 text-center">
+            <h1 class="display-3">Current Pets For Adoption</h1>
+            <a href="/add" class="btn btn-primary mb-2">Add Pet</a>
+            <div class="pets">
+            {%for pet in pets %}
+                <div class="img-thumbnail d-flex flex-column justify-content-center align-items-center">
+                    <h2>{{pet.name}}</h2>
+                    <a href="/pets/{{pet.id}}"><img class="w-50 p-3 img-fluid" src="{{pet.photo_url}}" alt="picture of {{pet.name}}"></a>
+                    {% if pet.available == True %}
+                    <bold class="btn btn-success w-20">Available</bold>
+                    {% else %}
+                    <bold class="btn btn-danger w-20">Not Available</bold>
+                    {% endif %}
+                </div>
+            {%endfor%}
+            </div>
+        </div>
+    </div>
+</div>
+{%endblock%}
